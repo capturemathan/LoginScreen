@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1063973046882",
+    "firebase_url": "https://login-screen-1b42c.firebaseio.com",
+    "project_id": "login-screen-1b42c",
+    "storage_bucket": "login-screen-1b42c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063973046882:android:c4e5945428f4289a",
+        "android_client_info": {
+          "package_name": "io.github.capturemathan.loginscreen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063973046882-9lptrs2ppsmavhpq2h9dhm7e59o41cf9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.capturemathan.loginscreen",
+            "certificate_hash": "e5798f5f512747388b16d30096d69016637f7a07"
+          }
+        },
+        {
+          "client_id": "1063973046882-4fv80b5udr5a67pnmd5d0j15f5fjdaan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7dJgDjHQ5zWwgdhZCyJgyf9MfYuYD3J0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063973046882-4fv80b5udr5a67pnmd5d0j15f5fjdaan.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
