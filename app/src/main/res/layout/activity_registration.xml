@@ -70,6 +70,21 @@
             android:textSize="20sp" />
     </com.github.florent37.materialtextfield.MaterialTextField>
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:paddingTop="10dp"
+        android:text="User Type"
+        android:textColor="@color/primary_text"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+
     <Button
         android:id="@+id/registeruser"
         android:layout_width="match_parent"

@@ -6,8 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,17 +22,40 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegistrationActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class RegistrationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText userName, userPassword, userEmail, userAge;
     private Button regButton;
     private FirebaseAuth firebaseAuth;
-    String email, name, age, password;
+    String email, name, age, password,type;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         firebaseAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_registration);
         super.onCreate(savedInstanceState);
+
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Driver");
+        categories.add("Customer");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 
         userEmail = findViewById(R.id.email);
         userPassword = findViewById(R.id.password);
@@ -103,7 +129,20 @@ public class RegistrationActivity extends AppCompatActivity {
     private void sendUserData() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
-        UserProfile userProfile = new UserProfile(age, email, name);
+        UserProfile userProfile = new UserProfile(age, email, name,type);
         myRef.setValue(userProfile);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        // On selecting a spinner item
+        type = adapterView.getItemAtPosition(i).toString();
+        // Showing selected spinner item
+        Toast.makeText(adapterView.getContext(), "Selected " + type, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

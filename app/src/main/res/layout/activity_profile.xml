@@ -43,4 +43,13 @@
         android:textColor="@color/primary_text"
         android:textSize="28dp" />
 
+    <TextView
+        android:id="@+id/tvProfileType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:text="Profile Type : "
+        android:textColor="@color/primary_text"
+        android:textSize="28dp" />
+
 </LinearLayout>

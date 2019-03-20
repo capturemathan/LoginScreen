@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
-    private TextView profileName, profileAge, profileEmail;
+    private TextView profileName, profileAge, profileEmail,profileType;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -34,6 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
         profileName = findViewById(R.id.tvProfileName);
         profileAge = findViewById(R.id.tvProfileAge);
         profileEmail = findViewById(R.id.tvProfileEmail);
+        profileType=findViewById(R.id.tvProfileType);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         new ProfileTask().execute();
@@ -65,12 +66,6 @@ public class ProfileActivity extends AppCompatActivity {
             firebaseAuth = FirebaseAuth.getInstance();
             firebaseDatabase = FirebaseDatabase.getInstance();
             databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -78,6 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
                     profileName.setText("Name: " + userProfile.getUserName());
                     profileAge.setText("Age: " + userProfile.getUserAge());
                     profileEmail.setText("Email: " + userProfile.getUserEmail());
+                    profileType.setText("Profile Type:"+userProfile.getUserType());
                 }
 
                 @Override
@@ -85,6 +81,12 @@ public class ProfileActivity extends AppCompatActivity {
                     Toast.makeText(ProfileActivity.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
                 }
             });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            progressDialog.dismiss();
             super.onPostExecute(aVoid);
         }
     }

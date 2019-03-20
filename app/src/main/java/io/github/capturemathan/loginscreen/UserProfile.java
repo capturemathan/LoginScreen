@@ -4,15 +4,19 @@ public class UserProfile {
     public String userAge;
     public String userEmail;
     public String userName;
+    public String userType; //To indicate a driver or a customer
 
     public UserProfile(){
     }
 
-    public UserProfile(String userAge, String userEmail, String userName) {
+    public UserProfile(String userAge, String userEmail, String userName, String userType) {
         this.userAge = userAge;
         this.userEmail = userEmail;
         this.userName = userName;
+        this.userType=userType;
     }
+
+    public String getUserType() {return userType; }
 
     public String getUserAge() {
         return userAge;

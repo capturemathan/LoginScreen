@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Successful Login :)"
+        android:text="Successful Login :) Checkout Profile for your Profile Type "
         android:textColor="@color/primary_text"
         android:textSize="25dp" />
 </LinearLayout>
